@@ -6,27 +6,34 @@ import { Link } from 'react-router-dom'
 export default class SideBar extends Component {
   render() {
     return (
-    <div className="site-menubar">
+      <div className="site-menubar">
         <div className="site-menubar text-left">
           <div className='divhover mw-100 p-20 mt-10'>
-           <a className='h4 p-20 mw-100'>Dashboard</a>
+            <a className='h4 p-20 mw-100'>Dashboard</a>
           </div>
-          <Link to = "/StaffMembers/View" >
+          <Link to="/StaffMembers/View" >
             <div className='divhover mw-100  p-20 '>
-            <a className='h4 p-20 mw-100'>Member Management</a>
+              <a className='h4 p-20 mw-100'>Member Management</a>
             </div>
           </Link>
-          <div className='divhover mw-100  p-20 '>
-           <a className='h4 p-20 mw-100'>Class And Nutrition</a>
-          </div>
+          <Link to="/NutritionSchedule/ViewAll" >
+            <div className='divhover mw-100  p-20 '>
+              <a className='h4 p-20 mw-100'>Nutrition Schedule</a>
+            </div>
+          </Link>
+          <Link to="/ClassSchedule/ViewAll" >
+            <div className='divhover mw-100  p-20 '>
+              <a className='h4 p-20 mw-100'>Class Schedule</a>
+            </div>
+          </Link>
           <div className='divhover mw-100 p-20'>
-           <a className='h4 p-20 mw-100'>Workout</a>
+            <a className='h4 p-20 mw-100'>Workout</a>
           </div>
           <div className='divhover mw-100  p-20'>
-           <a className='h4 p-20 mw-100'>Shop</a>
+            <a className='h4 p-20 mw-100'>Shop</a>
           </div>
         </div>
-    </div>
+      </div>
     )
   }
 }
