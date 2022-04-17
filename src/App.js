@@ -6,6 +6,7 @@ import AddStaffMember from './Pages/StaffMembers/Add'
 import ViewStaffMember from './Pages/StaffMembers/Viewall'
 import AddClassSchedule from './Pages/ClassSchedule/Add';
 import AddShopItem from "./Pages/Shop/AddShopItem";
+import ShopList from "./Pages/Shop/ShopList";
 function App() {
   return (
     <div>
@@ -21,6 +22,7 @@ function App() {
               <Route path="/StaffMembers/View" element={<ViewStaffMember />} />
               <Route path="/ClassSchedule/Add" element={<AddClassSchedule />} />
               <Route path="/shop/add" element={<AddShopItem />} />
+              <Route path="/shop/list" element={<ShopList />} />
             </Routes>
           </div>
         </div>
