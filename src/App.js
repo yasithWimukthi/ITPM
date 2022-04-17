@@ -4,23 +4,25 @@ import Header from './Components/Header';
 import SideBar from './Components/SideBar';
 import AddStaffMember from './Pages/StaffMembers/Add'
 import ViewStaffMember from './Pages/StaffMembers/Viewall'
+import AddClassSchedule from './Pages/ClassSchedule/Add';
 function App() {
   return (
     <div>
-     <Header/>
+      <Header />
       <div className='row m-0'>
-      <div className='col-2 m-0 p-0 mh-100'>
-        <SideBar/>
-      </div>
-      <div className="col-10">
+        <div className='col-2 m-0 p-0 mh-100'>
+          <SideBar />
+        </div>
+        <div className="col-10">
           <div className="page-content">
-              <Routes>
-                <Route path="/StaffMembers/Add" element={<AddStaffMember />} />
-                <Route path="/StaffMembers/View" element={<ViewStaffMember />} />
-              </Routes>
+            <Routes>
+              <Route path="/StaffMembers/Add" element={<AddStaffMember />} />
+              <Route path="/StaffMembers/View" element={<ViewStaffMember />} />
+              <Route path="/ClassSchedule/Add" element={<AddClassSchedule />} />
+            </Routes>
           </div>
         </div>
-    </div>
+      </div>
     </div>
   );
 }
