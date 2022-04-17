@@ -5,6 +5,7 @@ import SideBar from './Components/SideBar';
 import AddStaffMember from './Pages/StaffMembers/Add'
 import ViewStaffMember from './Pages/StaffMembers/Viewall'
 import AddClassSchedule from './Pages/ClassSchedule/Add';
+import AddShopItem from "./Pages/Shop/AddShopItem";
 function App() {
   return (
     <div>
@@ -19,6 +20,7 @@ function App() {
               <Route path="/StaffMembers/Add" element={<AddStaffMember />} />
               <Route path="/StaffMembers/View" element={<ViewStaffMember />} />
               <Route path="/ClassSchedule/Add" element={<AddClassSchedule />} />
+              <Route path="/shop/add" element={<AddShopItem />} />
             </Routes>
           </div>
         </div>
