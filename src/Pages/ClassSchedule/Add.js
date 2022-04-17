@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import TimePicker from 'react-time-picker';
 import { Link } from 'react-router-dom'
 
+import { addClassScheduleService } from '../../Services/ClassScheduleServices';
+
 
 const Add = () => {
     const [className, setClassName] = useState("")
@@ -22,6 +24,12 @@ const Add = () => {
         }
 
         console.log("payload>>", payload)
+        addClassScheduleService(payload).then((res) => {
+            if (res.ok) {
+                alert("Successfully added class schedule!")
+                window.location.reload()
+            }
+        })
     }
 
     return (
