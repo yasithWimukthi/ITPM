@@ -87,7 +87,7 @@ const Edit = () => {
                         <div className="form-group row">
                             <div className="col-md-9">
                                 <button type="reset" className="btn btn-danger">Clear</button>
-                                <button type="button" className="btn btn-primary mr-1" onClick={() => { onSubmit() }}>Add</button>
+                                <button type="button" className="btn btn-primary mr-1" onClick={() => { onSubmit() }}>Update</button>
                             </div>
                         </div>
                     </form>
