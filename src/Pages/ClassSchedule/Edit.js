@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TimePicker from 'react-time-picker';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const Edit = () => {
+    const locationn = useLocation();
+
+    console.log("dataa>>>", locationn.state?.record)
+
     const [className, setClassName] = useState("")
     const [staffName, setStaffname] = useState("")
     const [location, setLocation] = useState("")
     const [fee, setFee] = useState(0)
     const [startTime, onChangeStartTime] = useState('00:00');
     const [endTime, onChangeEndTime] = useState('00:00');
+
+    useEffect(() => {
+        setClassName(locationn.state?.record.className)
+        setStaffname(locationn.state?.record?.staffName)
+        setLocation(locationn.state?.record?.location)
+        setFee(locationn.state?.record?.fee)
+        onChangeStartTime(locationn.state?.record?.startTime)
+        onChangeEndTime(locationn.state?.record?.endTime)
+    }, []);
 
     const onSubmit = () => {
         const payload = {

@@ -4,12 +4,40 @@ import axios from "axios";
 const HOST = "http://localhost:4000";
 
 
-//for add an employee
+//for add a ClassSchedule
 export const addClassScheduleService = async (payload) => {
     try {
         await axios.post(`${HOST}/api/classSchedule`, payload);
         return {
             ok: true,
+        };
+    } catch (error) {
+        return {
+            ok: false, err: error.response.data.status
+        };
+    }
+};
+
+//for update a ClassSchedule
+export const updateClassScheduleRecodService = async (Id, payload) => {
+    try {
+        await axios.put(`${HOST}/api/classSchedule/${Id}`, payload);
+        return {
+            ok: true,
+        };
+    } catch (error) {
+        return {
+            ok: false, err: error.response.data.status
+        };
+    }
+};
+
+//for retrieve all the ClassSchedule records
+export const getAllClassScheduleRecodsService = async () => {
+    try {
+        const response = await axios.get(`${HOST}/api/classSchedule`);
+        return {
+            ok: true, data: response.data.data
         };
     } catch (error) {
         return {
