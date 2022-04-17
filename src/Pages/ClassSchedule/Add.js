@@ -4,8 +4,25 @@ import { Link } from 'react-router-dom'
 
 
 const Add = () => {
+    const [className, setClassName] = useState("")
+    const [staffName, setStaffname] = useState("")
+    const [location, setLocation] = useState("")
+    const [fee, setFee] = useState(0)
     const [startTime, onChangeStartTime] = useState('00:00');
     const [endTime, onChangeEndTime] = useState('00:00');
+
+    const onSubmit = () => {
+        const payload = {
+            className,
+            staffName,
+            location,
+            fee,
+            startTime,
+            endTime
+        }
+
+        console.log("payload>>", payload)
+    }
 
     return (
         <div className="panel page">
@@ -31,25 +48,25 @@ const Add = () => {
                         <div className="form-group row">
                             <label className="col-md-3 col-form-label">Class Name: </label>
                             <div className="col-md-9">
-                                <input type="text" className="form-control" name="name" autoComplete="off" />
+                                <input type="text" className="form-control" name="className" autoComplete="off" value={className} onChange={(e) => setClassName(e.target.value)} />
                             </div>
                         </div>
                         <div className="form-group row">
                             <label className="col-md-3 col-form-label">Staff Name: </label>
                             <div className="col-md-9">
-                                <input type="text" className="form-control" name="name" autoComplete="off" />
+                                <input type="text" className="form-control" name="staffName" autoComplete="off" value={staffName} onChange={(e) => setStaffname(e.target.value)} />
                             </div>
                         </div>
                         <div className="form-group row">
                             <label className="col-md-3 col-form-label">Location: </label>
                             <div className="col-md-9">
-                                <input type="text" className="form-control" name="name" autoComplete="off" />
+                                <input type="text" className="form-control" name="location" autoComplete="off" value={location} onChange={(e) => setLocation(e.target.value)} />
                             </div>
                         </div>
                         <div className="form-group row">
                             <label className="col-md-3 col-form-label">Fee: </label>
                             <div className="col-md-9">
-                                <input type="number" className="form-control" name="name" autoComplete="off" />
+                                <input type="number" className="form-control" name="fee" autoComplete="off" value={fee} onChange={(e) => setFee(e.target.value)} />
                             </div>
                         </div>
                         <div className="form-group row">
@@ -70,8 +87,8 @@ const Add = () => {
                         </div>
                         <div className="form-group row">
                             <div className="col-md-9">
-                                <button type="button" className="btn btn-primary mr-1">Save Staff</button>
                                 <button type="reset" className="btn btn-danger">Clear</button>
+                                <button type="button" className="btn btn-primary mr-1" onClick={() => { onSubmit() }}>Add</button>
                             </div>
                         </div>
                     </form>
