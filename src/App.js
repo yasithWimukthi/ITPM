@@ -4,6 +4,7 @@ import Header from './Components/Header';
 import SideBar from './Components/SideBar';
 import AddStaffMember from './Pages/StaffMembers/Add'
 import ViewStaffMember from './Pages/StaffMembers/Viewall'
+import AddShopItem from "./Pages/Shop/AddShopItem";
 function App() {
   return (
     <div>
@@ -17,6 +18,7 @@ function App() {
               <Routes>
                 <Route path="/StaffMembers/Add" element={<AddStaffMember />} />
                 <Route path="/StaffMembers/View" element={<ViewStaffMember />} />
+                <Route path="/shop/add" element={<AddShopItem />} />
               </Routes>
           </div>
         </div>
