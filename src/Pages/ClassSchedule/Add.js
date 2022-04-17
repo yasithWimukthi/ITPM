@@ -23,12 +23,16 @@ const Add = () => {
             endTime
         }
 
-        console.log("payload>>", payload)
         addClassScheduleService(payload).then((res) => {
             if (res.ok) {
                 alert("Successfully added class schedule!")
                 window.location.reload()
+            } else {
+                alert("oops! error occured...")
             }
+        }).catch((err) => {
+            alert("oops! error occured...")
+            console.error("err!", err.message)
         })
     }
 

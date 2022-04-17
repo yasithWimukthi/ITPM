@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import TimePicker from 'react-time-picker';
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { updateClassScheduleRecodService } from '../../Services/ClassScheduleServices';
 
 const Edit = () => {
     const locationn = useLocation();
+    const navigate = useNavigate();
 
     console.log("dataa>>>", locationn.state?.record)
 
@@ -15,7 +17,7 @@ const Edit = () => {
     const [endTime, onChangeEndTime] = useState('00:00');
 
     useEffect(() => {
-        setClassName(locationn.state?.record.className)
+        setClassName(locationn.state?.record?.className)
         setStaffname(locationn.state?.record?.staffName)
         setLocation(locationn.state?.record?.location)
         setFee(locationn.state?.record?.fee)
@@ -33,7 +35,17 @@ const Edit = () => {
             endTime
         }
 
-        console.log("payload>>", payload)
+        updateClassScheduleRecodService(locationn.state?.record?._id, payload).then((res) => {
+            if (res.ok) {
+                alert("Successfully Updated!")
+                navigate("/ClassSchedule/ViewAll")
+            } else {
+                alert("oops! error occured...")
+            }
+        }).catch((err) => {
+            alert("oops! error occured...")
+            console.error("err!", err.message)
+        })
     }
 
     return (
@@ -47,7 +59,7 @@ const Edit = () => {
                     <div className='col-6 text-right'>
                         <Link
                             // to="/StaffMembers/View"
-                            to="#"
+                            to="/ClassSchedule/ViewAll"
                             className='btn btn-primary' >
                             Class Schedule
                         </Link>

@@ -9,7 +9,6 @@ const ViewAll = () => {
 
     useEffect(() => {
         getAllClassScheduleRecodsService().then((res) => {
-            console.log("resssssssssssss>>>>>", res.data)
             setAllRecords(res?.data)
         }).catch((err) => {
             console.log("error while retrieving data")
