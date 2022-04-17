@@ -19,7 +19,7 @@ export default class SideBar extends Component {
           <div className='divhover mw-100  p-20 '>
             <a className='h4 p-20 mw-100'>Nutrition Schedule</a>
           </div>
-          <Link to="/ClassSchedule/Add" >
+          <Link to="/ClassSchedule/ViewAll" >
             <div className='divhover mw-100  p-20 '>
               <a className='h4 p-20 mw-100'>Class Schedule</a>
             </div>
