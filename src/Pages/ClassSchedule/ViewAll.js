@@ -1,7 +1,20 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { getAllClassScheduleRecodsService } from '../../Services/ClassScheduleServices'
 
 const ViewAll = () => {
+
+    let navigate = useNavigate();
+    const [allRecords, setAllRecords] = useState([])
+
+    useEffect(() => {
+        getAllClassScheduleRecodsService().then((res) => {
+            setAllRecords(res?.data)
+        }).catch((err) => {
+            console.log("error while retrieving data")
+        })
+    }, [])
+
     return (
         <div className="panel">
             <header className="panel-heading">
@@ -34,7 +47,22 @@ const ViewAll = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        {allRecords.map((record) => {
+                            return (
+                                <tr key={record._id}>
+                                    <td className='text-center'>{record.className}</td>
+                                    <td className='text-center'>{record.staffName}</td>
+                                    <td className='text-center'>{record.startTime} - {record.endTime}</td>
+                                    <td className='text-center'>{record.location}</td>
+                                    <td className='text-center'>{record.fee}</td>
+                                    <td className='text-center'>
+                                        <button class="btn btn-primary rounded-circle mr-3 " onClick={() => { navigate("/ClassSchedule/Edit", { state: { record } }) }}><i class="fa  fa-pencil "></i></button>
+                                        <button class="btn btn-danger rounded-circle"><i class="fa  fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            )
+                        })}
+                        {/* <tr>
                             <td className='text-center'>1</td>
                             <td className='text-center'>Mark</td>
                             <td className='text-center'>Otto</td>
@@ -44,7 +72,7 @@ const ViewAll = () => {
                                 <button class="btn btn-primary rounded-circle mr-3 "><i class="fa  fa-pencil "></i></button>
                                 <button class="btn btn-danger rounded-circle"><i class="fa  fa-trash"></i></button>
                             </td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </table>
 
